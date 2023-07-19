@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwv1w7mpobaxc"]
+
+[ext_resource type="Script" path="res://scene/scene_1.gd" id="1_7ytmt"]
+[ext_resource type="Texture2D" uid="uid://cfpjyhqr71a8m" path="res://img/image 1.png" id="2_hqhbu"]
+[ext_resource type="Shader" path="res://shader/shader_deformation.gdshader" id="2_l3bbh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbpxj"]
+shader = ExtResource("2_l3bbh")
+shader_parameter/scale = 1.0
+shader_parameter/offset = 0.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7ytmt")
+
+[node name="Image1" type="Sprite2D" parent="."]
+texture_repeat = 3
+material = SubResource("ShaderMaterial_jbpxj")
+texture = ExtResource("2_hqhbu")
+centered = false
