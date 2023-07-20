@@ -1,17 +1,42 @@
 shader_type spatial;
 
+render_mode specular_toon;
+
+uniform float map_scale = 2.;
+uniform float time_scale = 0.05;
 uniform float height_scale = 0.5;
-uniform sampler2D noise;
+uniform float normal_map_scale: hint_range(0.0, 1.0) = 0.;
+uniform sampler2D noise1;
+uniform sampler2D noise2;
 uniform sampler2D normalmap;
+uniform float epsilon: hint_range(0.0, 0.2) = 0.05;
+
+uniform vec3 albedo_2nd : source_color;
+
 
 varying vec2 tex_position;
 
+float height(vec2 pos){
+	return mix(texture(noise1, (pos + vec2(0., TIME*time_scale))/map_scale).x, texture(noise2, (pos + vec2(TIME*time_scale, 0.))/map_scale ).x, 0.5) * height_scale;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view){
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0)), amount);
+}
+
 void vertex() {
-  tex_position = VERTEX.xz / 2.0 + 0.5;
-  float height = texture(noise, tex_position).x;
-  VERTEX.y += height * height_scale;
+	tex_position = VERTEX.xz / 2.0 + 0.5 ;
+	//world_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz / 2.;  
+	VERTEX.y += height(tex_position);
+	TANGENT = normalize(vec3(0.0, height(tex_position + vec2(0., epsilon)) - height(tex_position - vec2(0., epsilon)), epsilon*2.));
+	BINORMAL = normalize(vec3(epsilon*2., height(tex_position + vec2(epsilon, 0.)) - height(tex_position - vec2(epsilon, 0.)), 0.0));
+	NORMAL = mix(cross(TANGENT, BINORMAL), NORMAL, normal_map_scale);
 }
 
 void fragment() {
-  NORMAL_MAP = texture(normalmap, tex_position).xyz;
+	
+	RIM = 0.2;
+	METALLIC = 0.0;
+	ROUGHNESS = 0.01 * (1.0 - fresnel(5.0, NORMAL, VIEW));
+	ALBEDO = mix(vec3(0.01, 0.03, 0.05), albedo_2nd, fresnel(5.0, NORMAL, VIEW));
 }

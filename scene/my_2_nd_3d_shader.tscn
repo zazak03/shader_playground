@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct5v7u5iaehl3"]
+[gd_scene load_steps=10 format=3 uid="uid://ct5v7u5iaehl3"]
 
 [ext_resource type="Shader" path="res://shader/my_2_nd_3d_shader.gdshader" id="1_t3roi"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_jol25"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0ilmp"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6j7oc"]
-noise = SubResource("FastNoiseLite_jol25")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2hgih"]
+seamless = true
+noise = SubResource("FastNoiseLite_0ilmp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cw6gl"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pexek"]
+seamless = true
+noise = SubResource("FastNoiseLite_cw6gl")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_rhga6"]
 
@@ -16,19 +23,32 @@ noise = SubResource("FastNoiseLite_rhga6")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqygx"]
 render_priority = 0
 shader = ExtResource("1_t3roi")
-shader_parameter/height_scale = 0.5
-shader_parameter/noise = SubResource("NoiseTexture2D_6j7oc")
+shader_parameter/map_scale = 20.0
+shader_parameter/time_scale = 0.1
+shader_parameter/height_scale = 0.7
+shader_parameter/normal_map_scale = 0.0
+shader_parameter/epsilon = 0.05
+shader_parameter/albedo_2nd = Color(0, 0.239216, 0.427451, 1)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_2hgih")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_pexek")
 shader_parameter/normalmap = SubResource("NoiseTexture2D_nfkbj")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c51jb"]
 material = SubResource("ShaderMaterial_wqygx")
-subdivide_width = 32
-subdivide_depth = 32
+size = Vector2(50, 100)
+subdivide_width = 1024
+subdivide_depth = 2048
 
 [node name="my_2nd_3D_shader" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40.2058)
 mesh = SubResource("PlaneMesh_c51jb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12332, 0.576839)
+transform = Transform3D(0.999996, -0.00198311, 0.00181426, 0.0026878, 0.737817, -0.674996, 0, 0.674998, 0.737819, 0, 500, 500)
+light_energy = 800.0
+omni_range = 4096.0
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.999962, 0.00233209, -0.00840925, 0, 0.96363, 0.267238, 0.00872664, 0.267228, -0.963594, 0, 5.185, -8.527)
