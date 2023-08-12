@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://pnru2n53t8uf"]
 
 [ext_resource type="Shader" path="res://shader/shader_deforamtion_2.gdshader" id="2_ytlvx"]
-[ext_resource type="Texture2D" uid="uid://cfpjyhqr71a8m" path="res://img/image 1.png" id="3_2wy3b"]
+[ext_resource type="Texture2D" uid="uid://7fveyyd64jfh" path="res://img/image 1.png" id="3_2wy3b"]
 
 [sub_resource type="Gradient" id="Gradient_ajjn7"]
 

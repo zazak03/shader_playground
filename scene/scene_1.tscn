@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwv1w7mpobaxc"]
 
 [ext_resource type="Script" path="res://scene/scene_1.gd" id="1_7ytmt"]
-[ext_resource type="Texture2D" uid="uid://cfpjyhqr71a8m" path="res://img/image 1.png" id="2_hqhbu"]
+[ext_resource type="Texture2D" uid="uid://7fveyyd64jfh" path="res://img/image 1.png" id="2_hqhbu"]
 [ext_resource type="Shader" path="res://shader/shader_deformation.gdshader" id="2_l3bbh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jbpxj"]

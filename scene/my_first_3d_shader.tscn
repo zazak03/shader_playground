@@ -30,4 +30,4 @@ subdivide_depth = 32
 mesh = SubResource("PlaneMesh_xc4cu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(0.967277, 0, -0.253724, 0, 1, 0, 0.253724, 0, 0.967277, 0.683379, 0.583456, 0.765225)
+transform = Transform3D(0.967277, 0, -0.253724, 0, 1, 0, 0.253724, 0, 0.967277, 0.774231, 0.752464, 0.858421)
