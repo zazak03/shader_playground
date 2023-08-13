@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c751xbbt02f3p" path="res://scene/player.tscn" id="3_jwjva"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic55l"]
-albedo_color = Color(0.313726, 0.552941, 0.180392, 1)
+albedo_color = Color(0.34902, 0.498039, 0.160784, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c5457"]
 material = SubResource("StandardMaterial3D_ic55l")
@@ -56,7 +56,6 @@ multimesh = SubResource("MultiMesh_vi07u")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.980669, 0.195672, 0, -0.195672, 0.980669, -0.531505, 12.4125, -1.70025)
-visible = false
 light_energy = 3.0
 omni_range = 50.0
 
@@ -78,7 +77,6 @@ size = Vector2i(1000, 1000)
 render_target_update_mode = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
-visible = false
 texture = SubResource("GradientTexture2D_5jxoe")
 centered = false
 
@@ -87,4 +85,5 @@ texture = SubResource("GradientTexture2D_d4xpp")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 2.08234, -2.26629)
+visible = false
 texture = SubResource("ViewportTexture_bahhm")
