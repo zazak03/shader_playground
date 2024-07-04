@@ -17,7 +17,7 @@ uniform float noize_force: hint_range(0.0, 1.0, 0.1);
 
 uniform float curbature_force: hint_range(0.0, 1.0, 0.1) = 0.1;
 uniform sampler2D player_on_floor;
-
+uniform float player_on_floor_size = 10;
 
 varying float curbature;
 varying float debug_var;

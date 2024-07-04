@@ -11,11 +11,11 @@ func set_viewport_to_shader(viewport:SubViewport, node:MultiMeshInstance3D):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var multimesh: MultiMesh = $grass.multimesh
-	multimesh.set_instance_count(20_000)
+	multimesh.set_instance_count(4_000)
 	for i in range(multimesh.instance_count):
 		var position = Transform3D()
 		#scale
-		position = position.scaled(Vector3(0.2,0.15,0.15)) #mise à la bone taille
+		position = position.scaled(Vector3(0.2,0.2,0.2)) #mise à la bone taille
 		position = position.scaled(Vector3(1,1,1) * (randf()*0.5+0.7))
 		#rotate
 		position = position.rotated(Vector3(0,0,-1),PI/2) #mise à la verticale

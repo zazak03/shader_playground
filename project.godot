@@ -12,12 +12,11 @@ config_version=5
 
 config/name="shader_playground"
 run/main_scene="res://meshs/grass.glb"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

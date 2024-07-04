@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxn7wuau6tpfc"]
+
+[ext_resource type="Shader" path="res://shader/ray_marching_1.gdshader" id="1_gkpu2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cawo0"]
+shader = ExtResource("1_gkpu2")
+
+[sub_resource type="Gradient" id="Gradient_c3iw1"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e80r8"]
+gradient = SubResource("Gradient_c3iw1")
+width = 256
+height = 256
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cawo0")
+texture = SubResource("GradientTexture2D_e80r8")
+centered = false

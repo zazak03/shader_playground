@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnvalx4pkal3b"]
+
+[ext_resource type="Shader" path="res://shader/buble effect.gdshader" id="1_h1n3s"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wytkc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77ffb"]
+render_priority = 0
+shader = ExtResource("1_h1n3s")
+shader_parameter/base_color = Color(0, 0.54902, 0.745098, 1)
+shader_parameter/transparency = 0.1
+shader_parameter/outline_power = 2.0
+shader_parameter/outline_mult = 0.8
+shader_parameter/colision_power = 10.0
+shader_parameter/colision_mult = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_aq81e"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_77ffb")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqe7i"]
+render_priority = 0
+shader = ExtResource("1_h1n3s")
+shader_parameter/base_color = Color(0, 140, 190, 1)
+shader_parameter/transparency = 0.1
+shader_parameter/outline_power = 2.0
+shader_parameter/outline_mult = 0.8
+shader_parameter/colision_power = 4.0
+shader_parameter/colision_mult = 0.9
+
+[sub_resource type="SphereMesh" id="SphereMesh_vr6ly"]
+material = SubResource("ShaderMaterial_bqe7i")
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_62kf2"]
+radial_steps = 3
+
+[node name="bubble_effect" type="Node3D"]
+
+[node name="cube1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.785505, -0.735581, -0.591948)
+mesh = SubResource("BoxMesh_wytkc")
+
+[node name="cube2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.854187, 0, -0.519966, 0, 1, 0, 0.519966, 0, 0.854187, 0.0735961, -0.416943, 0.695069)
+mesh = SubResource("BoxMesh_wytkc")
+skeleton = NodePath("../cube1")
+
+[node name="bubble" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.365367, -0.220099, 0.288173)
+mesh = SubResource("SphereMesh_aq81e")
+
+[node name="test1" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -2.23278)
+visible = false
+mesh = SubResource("SphereMesh_vr6ly")
+
+[node name="test2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.29787, -0.220099, 0.288173)
+mesh = SubResource("TubeTrailMesh_62kf2")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0usemaqdvtyb"]
+
+[ext_resource type="Shader" path="res://shader/art.gdshader" id="1_fy8hn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_afkea"]
+shader = ExtResource("1_fy8hn")
+
+[sub_resource type="Gradient" id="Gradient_w8f7a"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7u3nd"]
+gradient = SubResource("Gradient_w8f7a")
+width = 500
+height = 500
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_afkea")
+texture = SubResource("GradientTexture2D_7u3nd")
+centered = false

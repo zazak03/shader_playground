@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk5do54434oqu"]
+
+[ext_resource type="PackedScene" uid="uid://cw6ktqewn0bqo" path="res://meshs/singe.glb" id="1_xrj7v"]
+[ext_resource type="Shader" path="res://shader/outline.gdshader" id="2_ofpa0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tj8k"]
+render_priority = 0
+shader = ExtResource("2_ofpa0")
+shader_parameter/x_mult = 5.0
+shader_parameter/y_mult = 5.0
+shader_parameter/w_mult = 0.0
+shader_parameter/z_mult = 0.048
+shader_parameter/outline_color = null
+
+[node name="Node3D" type="Node3D"]
+
+[node name="singe" parent="." instance=ExtResource("1_xrj7v")]
+
+[node name="singe2" parent="singe" instance=ExtResource("1_xrj7v")]
+
+[node name="Suzanne" parent="singe/singe2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_8tj8k")
+
+[editable path="singe/singe2"]

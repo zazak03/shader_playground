@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b622m0s4mjap1"]
+
+[ext_resource type="Shader" path="res://scene/refraction.gdshader" id="1_gtx8h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5pjw5"]
+frequency = 0.0014
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bbvwr"]
+noise = SubResource("FastNoiseLite_5pjw5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e83km"]
+render_priority = 0
+shader = ExtResource("1_gtx8h")
+shader_parameter/map_scale = 2.0
+shader_parameter/time_scale = 0.05
+shader_parameter/time_height_scale = 0.05
+shader_parameter/height_scale = 0.5
+shader_parameter/normal_scale = 0.0
+shader_parameter/depth_max_vision = 3.0
+shader_parameter/albedo_2nd = null
+shader_parameter/noise1 = SubResource("NoiseTexture2D_bbvwr")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_83jqv"]
+material = SubResource("ShaderMaterial_e83km")
+size = Vector2(10, 10)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="BoxMesh" id="BoxMesh_s7n7w"]
+size = Vector3(1, 2, 1)
+
+[node name="refraction" type="Node3D"]
+
+[node name="water" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_83jqv")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.614827, -0.022932, 0.788329, 0.787863, 0.0271357, 0.615253, -0.0355008, 0.999369, 0.00138353, 0, 1.66556, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0587522, 0)
+mesh = SubResource("BoxMesh_s7n7w")

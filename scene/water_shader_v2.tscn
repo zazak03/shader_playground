@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ct5v7u5iaehl3"]
+[gd_scene load_steps=9 format=3 uid="uid://ele1vc2eeyfi"]
 
-[ext_resource type="Shader" path="res://shader/my_2_nd_3d_shader.gdshader" id="1_t3roi"]
+[ext_resource type="Shader" path="res://shader/water_shader_v2.gdshader" id="1_r5psq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0ilmp"]
 
@@ -16,13 +16,14 @@ noise = SubResource("FastNoiseLite_cw6gl")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wqygx"]
 render_priority = 0
-shader = ExtResource("1_t3roi")
+shader = ExtResource("1_r5psq")
 shader_parameter/map_scale = 19.305
 shader_parameter/time_scale = 0.87
 shader_parameter/height_scale = 0.2
 shader_parameter/normal_map_scale = 0.0
 shader_parameter/epsilon = 0.091
-shader_parameter/albedo_2nd = Color(0.431373, 0.356863, 0.270588, 1)
+shader_parameter/albedo_1st = Color(0.0901961, 0.447059, 0.678431, 1)
+shader_parameter/albedo_2nd = Color(0.137255, 0.321569, 0.788235, 1)
 shader_parameter/noise1 = SubResource("NoiseTexture2D_2hgih")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_pexek")
 
@@ -43,15 +44,18 @@ mesh = SubResource("PlaneMesh_c51jb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(0.999996, -0.00198311, 0.00181426, 0.0026878, 0.737817, -0.674995, 0, 0.674998, 0.73782, 0, 90.5475, 500)
+visible = false
 light_energy = 800.0
 omni_range = 4096.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.999962, 0.00233209, -0.00840925, 0, 0.96363, 0.267238, 0.00872664, 0.267228, -0.963594, 0, 5.185, -8.527)
+transform = Transform3D(-0.999962, 0.00233209, -0.00840925, 0.00118208, 0.990947, 0.134251, 0.00864621, 0.134235, -0.990912, 0, 3.75032, -8.527)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.243615, 0.969872, 0, -0.969872, 0.243615, 0, 0, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.601815, 0.798635, 0, -0.798635, 0.601815, -0.92247, 5.65837, 14.9994)
+light_color = Color(1, 0.768627, 0.254902, 1)
+light_volumetric_fog_energy = 14.556
+directional_shadow_mode = 0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.655848, 0.326548, 7.9532)
